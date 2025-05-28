@@ -1,3 +1,5 @@
+using ProjetoEscola.Repositorio;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -19,5 +21,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+builder.Services.AddScoped<AlunoRespRepositorio>();
 
 app.Run();
