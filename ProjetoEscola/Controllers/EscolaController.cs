@@ -20,6 +20,7 @@ namespace ProjetoEscola.Controllers
             return View(data);
         }
 
+        
         public IActionResult ConsultarResponsaveis()
         {
             var alunos = _alunoresprepositorio.Alunos();
@@ -27,5 +28,17 @@ namespace ProjetoEscola.Controllers
             ViewBag.HasAlunos = alunos != null && alunos.Any();
             return View();
         }
+
+        [HttpPost]
+        public IActionResult ConsultarResponsaveis(int codAluno)
+        {
+            var alunos = _alunoresprepositorio.Alunos();
+            ViewBag.Alunos = new SelectList(alunos, "CodAluno", "nome", codAluno);
+            ViewBag.HasAlunos = alunos != null && alunos.Any();
+            
+            var responsaveis = _alunoresprepositorio.ResponsaveisPorAluno(codAluno);
+            return View(responsaveis);
+        }
+
     }
 }

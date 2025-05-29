@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProjetoEscola.Models.Responsavel>
+
+@{
+    ViewData["Title"] = "Consultar Responsaveis por Aluno";
+}
+
+<h1>Consultar Responsáveis por Aluno</h1>
+
+<form asp-action="ConsultarResponsaveis" method="post">
+    <div class="form-group">
+        <label for="codAluno">Selecione o Aluno:</label>
+        <select name="codAluno" id="codAluno" class="form-control"
+                asp-items="@ViewBag.Alunos">
+            <option value="">-- Selecione um Aluno --</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Consultar</button>
+</form>
+@if (Model != null && Model.Any())
+{
+    <h3 class="mt-4">Responsáveis do Aluno Selecionado:</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código Responsável</th>
+                <th>Nome Responsável</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CodResp</td>
+                    <td>@item.Nome</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.HasAlunos != null && !(bool)ViewBag.HasAlunos && Context.Request.Method == "POST") // Adjusted condition
+{
+    <p class="mt-4">Nenhum aluno cadastrado para seleção.</p>
+    // Or a more appropriate message
+}
+else if (Model != null && !Model.Any() && Context.Request.Method == "POST") // This covers the case where an aluno was selected but no responsaveis were found
+{
+    <p class="mt-4">Nenhum responsável encontrado para o aluno selecionado.</p>
+}
