@@ -36,9 +36,9 @@ namespace ProjetoEscola.Repositorio
                         {
                             lista.Add(new RespAluno
                             {
-                                CodResp = reader.GetInt32("CodResp"),
-                                NomeResponsavel = reader.GetString("NomeResponsavel"),
-                                NomeAluno = reader.GetString("NomeAluno")
+                                CodResp = reader.GetInt32("Código do responsável"),
+                                NomeResponsavel = reader.GetString("Nome do responsável"),
+                                NomeAluno = reader.GetString("Nome do aluno")
                             });
                         }
                     }

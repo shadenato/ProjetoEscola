@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ProjetoEscola.Models.RespAluno>
+
+
+@{
+    ViewData["Title"] = "Responsáveis e Alunos";
+}
+
+<h1>Lista de Responsáveis e Seus Alunos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodResp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeResponsavel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeAluno)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodResp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeResponsavel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeAluno)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
