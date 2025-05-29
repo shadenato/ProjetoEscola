@@ -22,8 +22,8 @@ namespace ProjetoEscola.Repositorio
             using (MySqlConnection conexao = new MySqlConnection(_connectionString))
             {
                 conexao.Open();
-                string query = @"select t1.codResp as 'Código do responsável',
-                    t1.nome as 'Nome do responsável',
+                string query = @"select t1.codResp as 'Codigo do responsavel',
+                    t1.nome as 'Nome do responsavel',
                     t2.nome as 'Nome do aluno'
                     from responsavel t1
                     inner join aluno t2 on t1.codAluno = t2.codAluno;";
@@ -36,8 +36,8 @@ namespace ProjetoEscola.Repositorio
                         {
                             lista.Add(new RespAluno
                             {
-                                CodResp = reader.GetInt32("Código do responsável"),
-                                NomeResponsavel = reader.GetString("Nome do responsável"),
+                                CodResp = reader.GetInt32("Codigo do responsavel"),
+                                NomeResponsavel = reader.GetString("Nome do responsavel"),
                                 NomeAluno = reader.GetString("Nome do aluno")
                             });
                         }
