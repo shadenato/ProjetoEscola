@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ProjetoEscola.Repositorio;
 
 namespace ProjetoEscola.Controllers
@@ -17,6 +18,14 @@ namespace ProjetoEscola.Controllers
         {
             var data = _alunoresprepositorio.ResponsavelComAlunos();
             return View(data);
+        }
+
+        public IActionResult ConsultarResponsaveis()
+        {
+            var alunos = _alunoresprepositorio.Alunos();
+            ViewBag.Alunos = new SelectList(alunos, "CodAluno", "nome");
+            ViewBag.HasAlunos = alunos != null && alunos.Any();
+            return View();
         }
     }
 }
